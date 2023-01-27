@@ -5,10 +5,7 @@ pipeline {
             steps {
                 echo "Hello world"
                 echo "sanjay"
-<<<<<<< HEAD
-                echo "dhami"
-=======
->>>>>>> 5addae9c7d16d08faa96ad66dbede241a06d9bfd
+                echo "rohan"
                 
                     }
             }
