@@ -14,6 +14,7 @@ pipeline {
                 sh '''#!/bin/bash -xe
                   currentDate=$(date +"%Y-%m-%d_%Hh%Mm%Ss")
                    customTagName="jenkins-${BUILD_NUMBER}--${currentDate}"
+		   echo CUSTOM_TAG_NAME=${customTagName} >> ${PROPERTIES_FILE_NAME}
                   '''
 	  
 	  script {
