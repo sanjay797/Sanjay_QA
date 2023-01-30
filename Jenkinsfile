@@ -15,9 +15,10 @@ pipeline {
 	               sh '''#!/bin/bash -xe
 	               currentDate=$(date +"%Y-%m-%d_%Hh%Mm%Ss")
 		       customTagName="jenkins-${BUILD_NUMBER}--${currentDate}"
-                   git tag -a ${customTagName} -m 'Jenkinsfile push tag
-                   git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/sanjay797/Sanjay_QA.git ${customTagName}
-		 '''
+		       echo "ram"
+                       git tag -a ${customTagName} -m 'Jenkinsfile push tag
+                       git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/sanjay797/Sanjay_QA.git ${customTagName}
+		     '''
               } 
            }
         }
