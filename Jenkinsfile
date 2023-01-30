@@ -13,6 +13,7 @@ pipeline {
             steps {
 	  withCredentials([gitUsernamePassword(credentialsId: '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', gitToolName: 'git')]) {
 	       //        sh '''#!/bin/bash -xe
+		   sh "echo "ram1""
 		   sh "currentDate=$(date +"%Y-%m-%d_%Hh%Mm%Ss")"
 		   sh "customTagName="jenkins-${BUILD_NUMBER}--${currentDate}""
 		   sh "echo "ram""
