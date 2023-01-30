@@ -11,12 +11,12 @@ pipeline {
             }
 	   stage('git tagging') {
             steps {
-                withCredentials([gitUsernamePassword(credentialsId: 'ea1229bf-8724-4abc-b022-00f314e79ac7', gitToolName: 'git')]) {
+                withCredentials([gitUsernamePassword(credentialsId: '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', gitToolName: 'git')]) {
 			
-		sh("git tag -a some_tag_25 -m 'Jenkins'")
+		sh "git tag -a some_tag_26 -m 'Jenkins'"
 	        sh "echo ${env.GIT_USERNAME}"
 		sh "echo ${env.GIT_PASSWORD}"	
-		sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@https://github.com/sanjay797/Sanjay_QA.git --tags")
+		sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@https://github.com/sanjay797/Sanjay_QA.git --tags"
               }
            }
         
