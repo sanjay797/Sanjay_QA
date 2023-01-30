@@ -15,7 +15,7 @@ pipeline {
 			sh("git config --global --unset http.proxy")
 			sh("git config --global --unset https.proxy")
 
-                sh("git tag -a some_tag_2 -m 'Jenkins'")
+                sh("git tag -a some_tag_3 -m 'Jenkins'")
 		sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@https://github.com/sanjay797/Sanjay_QA.git --tags")
               }
            }
