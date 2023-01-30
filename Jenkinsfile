@@ -12,8 +12,9 @@ pipeline {
 	   stage('git tagging') {
             steps {
                 withCredentials([gitUsernamePassword(credentialsId: 'ce0d7a9d-3f28-425e-a936-8bca271d991f', gitToolName: 'git')]) {
-                sh("git tag -a some_tag_1 -m 'Jenkins'")
-                sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@https://github.com/sanjay797/Sanjay_QA.git --tags")
+                sh("git tag -a some_tag_2 -m 'Jenkins'")
+		sh ("git remote set-url origin https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@https://github.com/sanjay797/Sanjay_QA.git --tags")
+                sh("git push -u origin main")
               }
            }
         
