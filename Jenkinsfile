@@ -12,14 +12,21 @@ pipeline {
 	   stage('git tagging') {
             steps {
                 sh '''#!/bin/bash -xe
-                    currentDate=$(date +"%Y-%m-%d_%Hh%Mm%Ss")
-                    customTagName="jenkins-${BUILD_NUMBER}--${currentDate}"
+                  currentDate=$(date +"%Y-%m-%d_%Hh%Mm%Ss")
+                   customTagName="jenkins-${BUILD_NUMBER}--${currentDate}"
                   '''
-              withCredentials([gitUsernamePassword(credentialsId: 'ce0d7a9d-3f28-425e-a936-8bca271d991f', gitToolName: 'git')]) {
-                sh "git tag -a ${customTagName} -m 'Jenkinsfile push tag'"
+	  
+	  script {
+         def PROPERTIES = readProperties file: "${PROPERTIES_FILE_NAME}"
+         env.CUSTOM_TAG_NAME = PROPERTIES.CUSTOM_TAG_NAME
+     }
+	 
+      withCredentials([gitUsernamePassword(credentialsId: 'ce0d7a9d-3f28-425e-a936-8bca271d991f', gitToolName: 'git')]) {
+                sh "git tag -a ${CUSTOM_TAG_NAME} -m 'Jenkinsfile push tag'"
                 sh("git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@https://github.com/sanjay797/Sanjay_QA.git ${CUSTOM_TAG_NAME}")
               } 
            }
+        
         }
      }
    post {
