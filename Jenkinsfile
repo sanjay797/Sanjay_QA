@@ -13,12 +13,17 @@ pipeline {
             steps {
                 withCredentials([gitUsernamePassword(credentialsId: 'da0c896d-f2ba-4a55-b31c-61d9f058c990', gitToolName: 'git')]) {
 			
-		sh "git tag -a some_tag_89 -m 'Jenkins'"
-	        sh "echo ${env.GIT_USERNAME}"
-		sh "echo ${env.GIT_PASSWORD}"	
-		sh "git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/sanjay797/Sanjay_QA.git --tags"
-              }
-           }
+                                 sh '''#!/bin/bash -xe
+				   git config --global user.name "sanjay797"
+				   git config --global user.email "dhamisanjay7@gmail.com"
+	                           currentDate=$(date +"%Y-%m-%d_%Hh%Mm%Ss")
+				   customTagName="jenkins-${BUILD_NUMBER}--${currentDate}"
+                                   git tag -a ${customTagName} -m 'Jenkinsfile push tag'
+                                   git push https://${env.GIT_USERNAME}:${env.GIT_PASSWORD}@github.com/sanjay797/Sanjay_QA.git ${customTagName}
+				 '''
+              } 
+
+           }	
         
         }
      }
