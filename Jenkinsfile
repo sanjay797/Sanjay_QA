@@ -6,6 +6,7 @@ pipeline {
                 echo "Hello world"
                 echo "sanjay"
                 echo "rohan"
+		echo "kunal"
                 
                     }
             }
